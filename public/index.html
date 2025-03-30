@@ -15,16 +15,21 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        // Establish a connection to the server
         const socket = io();
         const messageInput = document.getElementById('message');
         const send = document.getElementById('send');
         const allMessages = document.getElementById('messages');
+
+        // Listen for 'message' events from the server
         socket.on('message', (message) => {
             const p = document.createElement('p');
             p.innerText = message;
             allMessages.appendChild(p);
         });
 
+        
+        // Add an event listener to the send button
         send.addEventListener('click', e => {
             const message = messageInput.value;
             console.log(message);
